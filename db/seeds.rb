@@ -1,7 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require "open-uri"
+
+file = URI.open("https://res.cloudinary.com/dw5npgaqk/image/upload/v1636708213/development/q92br8j0i45btp3mijr2ns66iiq3.png")
+article = Article.new(title: "MVC", body: "Object oriented framework")
+article.photo.attach(io: file, filename: "mvc.png", content_type: "image/png")
+article.save
